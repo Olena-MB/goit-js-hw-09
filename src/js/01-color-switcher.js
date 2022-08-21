@@ -10,7 +10,7 @@
   }
   function changeBackgroundColor () {
     body.style.backgroundColor = getRandomHexColor();
-    //body.style.color = getRandomHexColor();
+    
   };
   
   
