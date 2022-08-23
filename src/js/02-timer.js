@@ -28,7 +28,7 @@ const btnStart = document.querySelector('button[data-start]');
       if(selectedDates[0] < Date.now()) {
         Notify.failure('Please choose a date in the future'); 
         btnStart.disabled = true;
-        userDate = new Date();
+        userDate = new Date(); 
     } else { 
         btnStart.disabled = false;
         userDate = selectedDates[0];
@@ -36,7 +36,7 @@ const btnStart = document.querySelector('button[data-start]');
         btnStart.addEventListener('click', countdownTime);
  
     function countdownTime() {
-      timer = setInterval(() => {
+      const timerId = setInterval(() => {
         btnStart.disabled = true;
             const dateChoosenMs = new Date(inputEl.value.replace(/-/g, '/')).getTime();
             const now = new Date().getTime();
@@ -50,8 +50,9 @@ const btnStart = document.querySelector('button[data-start]');
             dataSeconds.innerHTML = seconds < 10 ? addLeadingZero(seconds) : seconds;
   
             if (timeLeft < 1000) {
-              clearInterval(timer);
-              startBtn.disabled = false;
+              clearInterval(timerId);
+              btnStart.disabled = false;
+              //return
             }
           }, 1000);
   }
